@@ -1,4 +1,4 @@
-import { toData } from 'maraca';
+import { fromJs } from 'maraca';
 import { createBrowserHistory, createMemoryHistory } from 'history';
 
 const history =
@@ -6,21 +6,17 @@ const history =
     ? createMemoryHistory()
     : createBrowserHistory();
 
-const map = m => emit => value => emit(toData(m(value)));
-
 const getUrl = value => {
   if (value.type !== 'list') return value.value || '';
-  return value.value.indices
-    .map(v => (v.type === 'value' ? v.value : ''))
+  return value.value
+    .map(v => (v.value.type === 'value' ? v.value.value : ''))
     .join('/');
 };
 
 export default {
-  title: toData(
-    map(x => {
-      if (x.type === 'value') document.title = x.value;
-    }),
-  ),
+  title: fromJs(() => value => {
+    if (value && value.type === 'value') document.title = value.value;
+  }),
   url: emit => {
     const run = v => {
       const url = getUrl(v);
@@ -28,7 +24,7 @@ export default {
       else history.push(`/${url}`);
     };
     const toValue = location => ({
-      ...toData(location.pathname.slice(1).split('/')),
+      ...fromJs(location.pathname.slice(1).split('/')),
       set: v => run(v),
     });
     emit(toValue(history.location));

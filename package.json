@@ -1,6 +1,6 @@
 {
   "name": "maraca-app",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "license": "MIT",
   "bin": {
     "maraca-dev": "./bin/dev.sh",
@@ -22,7 +22,7 @@
     "history": "^4.7.2",
     "html-webpack-plugin": "^3.2.0",
     "maraca": "^0.4.1",
-    "maraca-loader": "^0.2.1",
+    "maraca-loader": "^0.2.2",
     "maraca-render": "^0.2.7",
     "rimraf": "^2.6.3",
     "style-loader": "^0.23.1",

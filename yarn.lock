@@ -2376,10 +2376,10 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-maraca-loader@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/maraca-loader/-/maraca-loader-0.2.1.tgz#a976684351bcf1e52a17d4293591ffbbe1b2dd7e"
-  integrity sha512-93YE5Cjuaz3j+wHn3Nm32M6vsYT+OKcx1TZBp6tNmApYKSsdPD2d/O9k6jdVO9fcmqfrLm2a0yQPP5Zzf39XXA==
+maraca-loader@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/maraca-loader/-/maraca-loader-0.2.2.tgz#568a14c2fce095cad7940ea4565a7b743c80d3bc"
+  integrity sha512-fbq2MmyjHwJNP3exfzjF9swTt5ANnb+gWChE6k+J/gAVCWa01QFMOXSOjQCm3fT9ekoNk0MIGjJHWceTZDWgGw==
   dependencies:
     maraca "^0.4.1"
 

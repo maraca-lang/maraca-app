@@ -23,7 +23,7 @@ module.exports = env => ({
         use: ['file-loader'],
       },
       {
-        test: /\.tsx?$/,
+        test: /\.ts$/,
         use: [
           {
             loader: 'ts-loader',
@@ -39,7 +39,7 @@ module.exports = env => ({
     extensions: ['.ma', '.js', '.ts'],
   },
   output: {
-    filename: '[name].bundle.js',
+    filename: 'main.js',
     chunkFilename: '[name].bundle.js',
     path: path.resolve(__dirname, '../../public'),
     publicPath: '/',

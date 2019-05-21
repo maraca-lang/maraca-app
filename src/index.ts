@@ -1,5 +1,5 @@
 import maraca from 'maraca';
-import render, { html } from 'maraca-render';
+import render from 'maraca-render';
 
 import '../style.css';
 
@@ -32,4 +32,4 @@ const root = document.createElement('div');
 root.id = 'root';
 document.body.appendChild(root);
 
-maraca([start, modules], config, render({ ...html, ...components }, root));
+maraca([start, modules], config, render(components, root));

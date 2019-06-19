@@ -20,8 +20,12 @@ export default {
   url: emit => {
     const run = v => {
       const url = getUrl(v);
-      if (url.startsWith('http')) window.open(url, '_blank');
-      else history.push(`/${url}`);
+      if (url.startsWith('http')) {
+        window.open(url, '_blank');
+      } else {
+        history.push(`/${url}`);
+        window.scroll(0, 0);
+      }
     };
     const toValue = location => ({
       ...fromJs(location.pathname.slice(1).split('/')),

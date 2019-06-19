@@ -160,12 +160,6 @@ body,
 #root {
   height: 100%;
 }
-#root {
-  overflow: scroll;
-}
-#root > * {
-  overflow: hidden;
-}
 
 img {
   display: block;

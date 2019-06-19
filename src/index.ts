@@ -32,4 +32,4 @@ const root = document.createElement('div');
 root.id = 'root';
 document.body.appendChild(root);
 
-maraca([start, modules], config, render(components, root));
+maraca([start, modules], config, render(root, components));

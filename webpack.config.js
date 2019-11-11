@@ -36,25 +36,7 @@ module.exports = env => ({
       },
       {
         test: /\.ts$/,
-        use: [
-          {
-            loader: 'ts-loader',
-            options: {
-              compilerOptions: {
-                target: 'es5',
-                lib: ['dom', 'esnext'],
-                module: 'esnext',
-                moduleResolution: 'node',
-                sourceMap: true,
-                strict: true,
-                noUnusedLocals: true,
-                noUnusedParameters: true,
-                noImplicitAny: false,
-                downlevelIteration: true,
-              },
-            },
-          },
-        ],
+        use: [{ loader: 'ts-loader' }],
       },
     ],
   },

@@ -15,6 +15,9 @@ module.exports = env => ({
     contentBase: './public',
     historyApiFallback: true,
   },
+  resolve: {
+    extensions: ['.ts', '.js'],
+  },
   module: {
     rules: [
       {
@@ -36,7 +39,8 @@ module.exports = env => ({
       },
       {
         test: /\.ts$/,
-        use: [{ loader: 'ts-loader' }],
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
     ],
   },

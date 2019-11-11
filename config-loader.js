@@ -50,7 +50,7 @@ const library = {
 
 const streams = ${
   typeof config.streams === 'string'
-    ? `require(./${config.streams}).default`
+    ? `require('./${config.streams}').default`
     : '{}'
 };
 
@@ -61,7 +61,7 @@ const config = {
 
 const components = ${
   typeof config.components === 'string'
-    ? `require(./${config.components}).default`
+    ? `require('./${config.components}').default`
     : '{}'
 };
 

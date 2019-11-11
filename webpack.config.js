@@ -68,7 +68,7 @@ module.exports = env => ({
       title: '',
       favicon: typeof config.favicon === 'string' ? config.favicon : '',
     }),
-    new HtmlWebpackTagsPlugin({ tags: ['style.css'], usePublicPath: false }),
+    new HtmlTagsPlugin({ tags: ['style.css'], usePublicPath: false }),
   ],
 });
 

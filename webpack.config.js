@@ -19,7 +19,7 @@ module.exports = env => ({
     rules: [
       {
         test: /\/config.ma$/,
-        use: [{ loader: path.resolve('./config-loader.js') }],
+        use: ['maraca-app'],
       },
       {
         test: /\.ma$/,

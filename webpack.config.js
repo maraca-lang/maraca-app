@@ -1,6 +1,20 @@
+const fs = require('fs');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const AddAssetPlugin = require('add-asset-webpack-plugin');
+const maraca = require('maraca').default;
+
+const dataToObj = data =>
+  data.type === 'value'
+    ? data.value
+    : data.value.reduce(
+        (res, { key, value }) =>
+          key.type === 'list' ? res : { ...res, [key.value]: dataToObj(value) },
+        {},
+      );
+
+const config = dataToObj(maraca(fs.readFileSync('./config.ma', 'utf8')));
+const port = Number(config.port) || 8080;
 
 module.exports = env => ({
   mode: env === 'prod' ? 'production' : 'development',
@@ -14,6 +28,7 @@ module.exports = env => ({
   devServer: {
     contentBase: './public',
     historyApiFallback: true,
+    port,
   },
   resolve: {
     extensions: ['.ts', '.js'],

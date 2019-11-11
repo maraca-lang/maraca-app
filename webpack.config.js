@@ -15,13 +15,13 @@ const dataToObj = data =>
         {},
       );
 
-const config = dataToObj(maraca(fs.readFileSync('./config.ma', 'utf8')));
+const config = dataToObj(maraca(fs.readFileSync('./app.ma', 'utf8')));
 const port = Number(config.port) || 8080;
 
 module.exports = env => ({
   mode: env === 'prod' ? 'production' : 'development',
   stats: 'errors-only',
-  entry: './config.ma',
+  entry: './app.ma',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'public'),
@@ -38,12 +38,12 @@ module.exports = env => ({
   module: {
     rules: [
       {
-        test: /\/config.ma$/,
+        test: /\/app.ma$/,
         use: ['maraca-app'],
       },
       {
         test: /\.ma$/,
-        exclude: /\/config.ma$/,
+        exclude: /\/app.ma$/,
         use: ['maraca-loader'],
       },
       {

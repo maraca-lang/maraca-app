@@ -7,7 +7,7 @@
     "app-build": "./bin/build.sh"
   },
   "scripts": {
-    "prettier": "prettier --write \"src/**/*\""
+    "prettier": "prettier --write \"**/*.js\""
   },
   "prettier": {
     "singleQuote": true,

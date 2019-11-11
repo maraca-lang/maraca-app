@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const AddAssetPlugin = require('add-asset-webpack-plugin');
+const HTMLPlugin = require('html-webpack-plugin');
 const maraca = require('maraca').default;
 
 const dataToObj = data =>
@@ -60,20 +60,16 @@ module.exports = env => ({
     ],
   },
   plugins: [
-    new CopyWebpackPlugin(['favicon.ico'], { logLevel: 'error' }),
     new AddAssetPlugin('_redirects', `/*    /index.html   200`),
-    new AddAssetPlugin('index.html', html),
+    new AddAssetPlugin('style.css', css),
+    new HTMLPlugin({
+      title: '',
+      favicon: typeof config.favicon === 'string' ? config.favicon : '',
+    }),
   ],
 });
 
-const html = `
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title></title>
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-    <style>
+const css = `
 html,
 body,
 div,
@@ -245,9 +241,4 @@ img {
 .CodeMirror {
   height: 100% !important;
 }
-    </style>
-  </head>
-  <body>
-  <script type="text/javascript" src="main.js"></script></body>
-</html>
 `;

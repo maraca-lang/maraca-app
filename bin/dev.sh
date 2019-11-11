@@ -1,1 +1,1 @@
-webpack-dev-server --config node_modules/maraca-app/webpack.config.js
+webpack-dev-server

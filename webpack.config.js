@@ -24,7 +24,9 @@ module.exports = env => ({
   entry: './app.ma',
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'public'),
+    chunkFilename: '[name].bundle.js',
+    path: path.resolve(__dirname, '../../public'),
+    publicPath: '/',
   },
   devtool: 'inline-source-map',
   devServer: {

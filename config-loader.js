@@ -35,7 +35,7 @@ const library = {
       if (url.startsWith('http')) {
         window.open(url, '_blank');
       } else {
-        history.push(\`/${url}\`);
+        history.push(\`/\${url}\`);
         window.scroll(0, 0);
       }
     };

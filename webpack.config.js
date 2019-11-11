@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const AddAssetPlugin = require('add-asset-webpack-plugin');
 const HTMLPlugin = require('html-webpack-plugin');
+const HtmlTagsPlugin = require('html-webpack-tags-plugin');
+
 const maraca = require('maraca').default;
 
 const dataToObj = data =>
@@ -66,6 +68,7 @@ module.exports = env => ({
       title: '',
       favicon: typeof config.favicon === 'string' ? config.favicon : '',
     }),
+    new HtmlWebpackTagsPlugin({ tags: ['style.css'], usePublicPath: false }),
   ],
 });
 

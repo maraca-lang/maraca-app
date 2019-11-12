@@ -1,10 +1,10 @@
 {
   "name": "maraca-app",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "license": "MIT",
   "bin": {
-    "app-dev": "./bin/dev.sh",
-    "app-build": "./bin/build.sh"
+    "dev": "./bin/dev.sh",
+    "build": "./bin/build.sh"
   },
   "main": "config-loader.js",
   "scripts": {
@@ -12,20 +12,18 @@
   },
   "prettier": {
     "singleQuote": true,
-    "trailingComma": "all"
+    "trailingComma": "all",
+    "proseWrap": "always"
   },
   "dependencies": {
     "add-asset-webpack-plugin": "^1.0.0",
     "copy-webpack-plugin": "^5.0.5",
-    "css-loader": "^3.2.0",
-    "file-loader": "^4.2.0",
     "history": "^4.10.1",
     "html-webpack-plugin": "^3.2.0",
     "html-webpack-tags-plugin": "^2.0.17",
     "maraca": "^0.5.3",
     "maraca-loader": "^0.2.3",
     "maraca-render": "^0.4.0",
-    "style-loader": "^1.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"

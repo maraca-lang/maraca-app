@@ -29,9 +29,9 @@
   integrity sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
 
 "@types/node@*":
-  version "12.12.7"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.7.tgz#01e4ea724d9e3bd50d90c11fd5980ba317d8fa11"
-  integrity sha512-E6Zn0rffhgd130zbCbAr/JdXfXkoOUFAKNs/rF8qnafSJ8KYaA/j3oz7dcwal+lYjLA7xvdd5J4wdYpCTlP8+w==
+  version "12.12.11"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.11.tgz#bec2961975888d964196bf0016a2f984d793d3ce"
+  integrity sha512-O+x6uIpa6oMNTkPuHDa9MhMMehlxLAd5QcOvKRjAFsBVpeFWTOPnXbDvILvFgFFZfQ1xh1EZi1FbXxUix+zpsQ==
 
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
@@ -1030,9 +1030,9 @@ decode-uri-component@^0.2.0:
   integrity sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU=
 
 deep-equal@^1.0.1:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/deep-equal/-/deep-equal-1.1.0.tgz#3103cdf8ab6d32cf4a8df7865458f2b8d33f3745"
-  integrity sha512-ZbfWJq/wN1Z273o7mUSjILYqehAktR2NVoSrOukDkU9kg2v/Uv89yU4Cvz8seJeAmtN5oqiefKq8FPuXOboqLw==
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/deep-equal/-/deep-equal-1.1.1.tgz#b5c98c942ceffaf7cb051e24e1434a25a2e6076a"
+  integrity sha512-yd9c5AdiqVcR+JjcwUQb9DkhJc8ngNr0MahEBGvDiJw8puWab2yZlh+nkasOnZP+EGTAP6rRp2JzJhJZzvNF8g==
   dependencies:
     is-arguments "^1.0.4"
     is-date-object "^1.0.1"
@@ -1828,9 +1828,9 @@ has-flag@^3.0.0:
   integrity sha1-tdRU3CGZriJWmfNGfloH87lVuv0=
 
 has-symbols@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/has-symbols/-/has-symbols-1.0.0.tgz#ba1a8f1af2a0fc39650f5c850367704122063b44"
-  integrity sha1-uhqPGvKg/DllD1yFA2dwQSIGO0Q=
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/has-symbols/-/has-symbols-1.0.1.tgz#9f5214758a44196c406d9bd76cebf81ec2dd31e8"
+  integrity sha512-PLcsoqu++dmEIZB+6totNFKq/7Do+Z0u4oT0zKOJNl3lYK6vGwwu2hjHs+68OEZbTjiUE9bgOABXbP/GvrS0Kg==
 
 has-unicode@^2.0.0:
   version "2.0.1"
@@ -2555,19 +2555,19 @@ maraca-loader@^0.2.3:
   dependencies:
     maraca "*"
 
-maraca-render@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/maraca-render/-/maraca-render-0.4.0.tgz#90faf0d4ca1a54fa722fab40e267c95097ee7819"
-  integrity sha512-LQ/w7oGxVV2PoIV10vVE+K+BCuT1kPJ3gWzSURHmJv2BdXwL5yTgzfjelGlJD97Xi6XXL1NXvibyXUJEj4X06A==
+maraca-render@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/maraca-render/-/maraca-render-0.4.1.tgz#8a4c388a1055a1c65bc12542078107483c18c15b"
+  integrity sha512-ygw4VW+qkxrOcrnZobjGlrqX+8vPICZLptL6kWsL/g78nQkITw5l6l9fAsIp3guFNm484Gr0qnxToUBrFtYFwQ==
   dependencies:
     element-resize-detector "^1.2.0"
     lodash.throttle "^4.1.1"
-    maraca "^0.5.2"
+    maraca "^0.5.4"
 
-maraca@*, maraca@^0.5.2, maraca@^0.5.3:
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/maraca/-/maraca-0.5.3.tgz#e52b8f1d113215489e1512eb6211b92f98d218b4"
-  integrity sha512-Xhkm8raOYXMJRuLYrdTO3J0aFb0urAcTWQZPOdHRPk/grwrWM3EW2iDj+cB+o36GauqX4VX0E9Q3Ezl/+tIX2g==
+maraca@*, maraca@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/maraca/-/maraca-0.5.4.tgz#313695b694f6740baf76df65a9fced95e61f84f0"
+  integrity sha512-2vas0AE9Ybyry0V9zVu2jLVTvy70TskUPWr3j9pXTATGmaKFHFpL6nH6ByUM6y97up6SqRlRjffpI5dnhXRaXA==
   dependencies:
     ohm-js "^0.14.0"
 
@@ -3331,9 +3331,9 @@ postcss-value-parser@^4.0.0:
   integrity sha512-LmeoohTpp/K4UiyQCwuGWlONxXamGzCMtFxLq4W1nZVGIQLYvMCJx3yAF9qyyuFpflABI9yVdtJAqbihOsCsJQ==
 
 postcss@^7.0.14, postcss@^7.0.16, postcss@^7.0.17, postcss@^7.0.5, postcss@^7.0.6:
-  version "7.0.21"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.21.tgz#06bb07824c19c2021c5d056d5b10c35b989f7e17"
-  integrity sha512-uIFtJElxJo29QC753JzhidoAhvp/e/Exezkdhfmt8AymWT6/5B7W1WmponYWkHk2eg6sONyTch0A3nkMPun3SQ==
+  version "7.0.23"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.23.tgz#9f9759fad661b15964f3cfc3140f66f1e05eadc1"
+  integrity sha512-hOlMf3ouRIFXD+j2VJecwssTwbvsPGJVMzupptg+85WA+i7MwyrydmQAgY3R+m0Bc0exunhbJmijy8u8+vufuQ==
   dependencies:
     chalk "^2.4.2"
     source-map "^0.6.1"
@@ -4439,6 +4439,11 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   integrity sha512-O84QOnr0icsbFGLS0O3bI5FswxzRr8/gHwWkDlQFskhSPryQXvrTMxjxGP4+iWYoauLoBvfDpkrOauZ+0iZpDA==
   dependencies:
     minimalistic-assert "^1.0.0"
+
+webfontloader@^1.6.28:
+  version "1.6.28"
+  resolved "https://registry.yarnpkg.com/webfontloader/-/webfontloader-1.6.28.tgz#db786129253cb6e8eae54c2fb05f870af6675bae"
+  integrity sha1-23hhKSU8tujq5UwvsF+HCvZnW64=
 
 webpack-cli@^3.3.10:
   version "3.3.10"

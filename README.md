@@ -28,32 +28,50 @@ values:
 
 - `app`: The location of the Maraca files for your app, which must include
   `start.ma` as the entry file (defaults to `app`)
-- `streams`: The location of a JavaScript file which defines the custom streams
-  for your app
+- `library`: The configuration of the custom library streams (`#`) for your
+  app - see below for options
+- `dynamics`: The location of a JavaScript file which defines the custom dynamic
+  streams (`@`) for your app
 - `components`: The location of a JavaScript file which defines the custom
   components for your app
 - `favicon`: The location of the favicon for your app
 - `port`: The port to use for the development server (defaults to 8080)
+- `fonts`: A list of font definitions for Google Web Fonts
+
+### Library
+
+The `library` key accepts a list, with both indexed and keys values:
+
+- `indexed`: The location of a JavaScript file which exports multiple named
+  custom streams
+- `keyed`: Either the location of a JavaScript file which exports a single
+  stream, or another list with a type on the `nil` key, and any other required
+  options for that type
+
+#### Websockets
+
+The `websocket` type takes a single parameter `url`.
 
 ## Example configuration
 
 ```
 [
   app: src,
-  streams: "js/streams",
+  library: ["js/library", data: [: websocket, url: "ws://example.com"]],
   favicon: "favicon.ico",
+  fonts: ["Montserrat:400,700"],
 ]
 ```
 
 This configuration would work with the following folder structure:
 
 ```
-root
+my-app
 ├── app
 │   ├── start.ma
 │   └── utils.ma
 ├── js
-│   └── streams.js
+│   └── library.js
 ├── favicon.ico
 └── app.ma
 ```

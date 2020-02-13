@@ -9,11 +9,15 @@ const maraca = require('maraca').default;
 const dataToObj = data =>
   data.type === 'value'
     ? data.value
-    : data.value.reduce(
-        (res, { key, value }) =>
-          key.type === 'list' ? res : { ...res, [key.value]: dataToObj(value) },
-        {},
-      );
+    : data.value
+        .toPairs()
+        .reduce(
+          (res, { key, value }) =>
+            key.type === 'box'
+              ? res
+              : { ...res, [key.value]: dataToObj(value) },
+          {},
+        );
 
 const config = dataToObj(maraca(fs.readFileSync('./app.ma', 'utf8')));
 const port = Number(config.port) || 8080;

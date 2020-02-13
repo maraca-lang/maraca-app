@@ -44,8 +44,8 @@ const history =
     : createBrowserHistory();
 
 const getUrl = value => {
-  if (value.type !== 'list') return value.value || '';
-  return value.value
+  if (value.type !== 'box') return value.value || '';
+  return value.value.toPairs()
     .map(v => (v.value.type === 'value' ? v.value.value : ''))
     .join('/');
 };
@@ -140,11 +140,15 @@ maraca([start, modules], config, render(root, components));
 const dataToObj = data =>
   data.type === 'value'
     ? data.value
-    : data.value.reduce(
-        (res, { key, value }) =>
-          key.type === 'list' ? res : { ...res, [key.value]: dataToObj(value) },
-        {},
-      );
+    : data.value
+        .toPairs()
+        .reduce(
+          (res, { key, value }) =>
+            key.type === 'box'
+              ? res
+              : { ...res, [key.value]: dataToObj(value) },
+          {},
+        );
 
 module.exports = function(content) {
   const config = maraca(content);

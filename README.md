@@ -23,7 +23,7 @@ npm install maraca-app --save
 ## Setup
 
 Create a file called `app.ma` in the root directory. This file is the
-configuration of your app, written as a Maraca list with the following optional
+configuration of your app, written as a Maraca box with the following optional
 values:
 
 - `app`: The location of the Maraca files for your app, which must include
@@ -40,12 +40,12 @@ values:
 
 ### Library
 
-The `library` key accepts a list, with both indexed and keys values:
+The `library` key accepts a box, with both indexed and keys values:
 
 - `indexed`: The location of a JavaScript file which exports multiple named
   custom streams
 - `keyed`: Either the location of a JavaScript file which exports a single
-  stream, or another list with a type on the `nil` key, and any other required
+  stream, or another box with a type on the `nil` key, and any other required
   options for that type
 
 #### Websockets

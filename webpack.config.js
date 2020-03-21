@@ -6,7 +6,7 @@ const HtmlTagsPlugin = require('html-webpack-tags-plugin');
 
 const maraca = require('maraca').default;
 
-const dataToObj = data =>
+const dataToObj = (data) =>
   data.type === 'value'
     ? data.value
     : data.value
@@ -22,7 +22,7 @@ const dataToObj = data =>
 const config = dataToObj(maraca(fs.readFileSync('./app.ma', 'utf8')));
 const port = Number(config.port) || 8080;
 
-module.exports = env => ({
+module.exports = (env) => ({
   mode: env === 'prod' ? 'production' : 'development',
   stats: 'errors-only',
   entry: './app.ma',

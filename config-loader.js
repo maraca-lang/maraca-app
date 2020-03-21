@@ -115,14 +115,6 @@ const library = {
     .join('\n')}
 };
 
-const dynamics = ${
-  typeof config.dynamics === 'string'
-    ? `require('./${config.dynamics}').default`
-    : '[]'
-}
-
-const config = { '@': dynamics, '#': library };
-
 const components = ${
   typeof config.components === 'string'
     ? `require('./${config.components}').default`
@@ -133,7 +125,7 @@ const root = document.createElement('div');
 root.id = 'root';
 document.body.appendChild(root);
 
-maraca([start, modules], config, render(root, components));
+maraca([start, modules], library, render(root, components));
 
 `;
 

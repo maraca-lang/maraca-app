@@ -1,19 +1,20 @@
 const maraca = require('maraca').default;
 
-const toIndex = v => {
+const toIndex = (v) => {
   const n = parseFloat(v);
   return !isNaN(v) && !isNaN(n) && n === Math.floor(n) && n > 0 && n;
 };
 
-const getFontsConfig = fonts => {
+const getFontsConfig = (fonts) => {
   if (typeof fonts === 'string') return [fonts];
   return Object.keys(fonts)
     .filter(toIndex)
-    .map(k => fonts[k]);
+    .map((k) => fonts[k]);
 };
 
-const script = config => `
+const script = (config) => `
 
+const path = require('path');
 const { default: maraca, fromJs, toJs } = require('maraca');
 const { default: render } = require('maraca-render');
 const { createBrowserHistory, createMemoryHistory } = require('history');
@@ -31,12 +32,18 @@ if (typeof window !== 'undefined') {
     : ``
 }
 
+const set = (obj, path, value) =>
+  path.reduce(
+    (res, k, i) => (res[k] = i === path.length - 1 ? value : res[k] || {}),
+    obj,
+  );
 const app = require.context('./${
   typeof config.app === 'string' ? config.app : 'app'
 }', true, /\.ma$/);
-const { start, ...modules } = app
-  .keys()
-  .reduce((res, k) => ({ ...res, [k.slice(2, -3)]: app(k).default }), {});
+const modules = app.keys().reduce((res, k) => {
+  set(res, k.slice(2, -3).split(path.sep), app(k).default);
+  return res;
+}, {});
 
 const history =
   typeof window === 'undefined'
@@ -97,7 +104,7 @@ const library = {
     return history.listen(location => emit(toValue(location)));
   },
   ${Object.keys((typeof config.library === 'object' && config.library) || {})
-    .map(k => {
+    .map((k) => {
       const n = parseFloat(k);
       if (!isNaN(k) && !isNaN(n) && n === Math.floor(n) && n > 0) {
         if (typeof config.library[k] !== 'string') return null;
@@ -111,7 +118,7 @@ const library = {
       }
       return null;
     })
-    .filter(s => s)
+    .filter((s) => s)
     .join('\n')}
 };
 
@@ -125,11 +132,11 @@ const root = document.createElement('div');
 root.id = 'root';
 document.body.appendChild(root);
 
-maraca([start, modules], library, render(root, components));
+maraca(modules, library, render(root, components));
 
 `;
 
-const dataToObj = data =>
+const dataToObj = (data) =>
   data.type === 'value'
     ? data.value
     : data.value
@@ -142,7 +149,7 @@ const dataToObj = data =>
           {},
         );
 
-module.exports = function(content) {
+module.exports = function (content) {
   const config = maraca(content);
   return script(dataToObj(config));
 };

@@ -51,7 +51,7 @@ const history =
     : createBrowserHistory();
 
 const getUrl = value => {
-  if (value.type !== 'box') return value.value || '';
+  if (value.type === 'value') return value.value;
   return value.value.toPairs()
     .map(v => (v.value.type === 'value' ? v.value.value : ''))
     .join('/');
@@ -65,43 +65,48 @@ const websocketStream = url => emit => {
     isOpen = true;
     while (messages.length) ws.send(messages.shift());
   });
-  const set = data => {
+  const push = data => {
     const message = JSON.stringify(toJs(data) || '');
     if (isOpen) ws.send(message);
     else messages.push(message);
   };
-  emit({ ...fromJs(null), set });
+  emit({ ...fromJs(null), push });
   ws.addEventListener('message', m => {
-    emit({ ...fromJs(JSON.parse(m.data)), set });
+    emit({ ...fromJs(JSON.parse(m.data)), push });
   });
   return () => ws.close();
 };
 
 const library = {
-  title: fromJs(() => value => {
-    if (value && value.type === 'value') document.title = value.value;
+  title: fromJs((value) => (_, get) => () => {
+    const v = get(value);
+    if (v.type === 'value') document.title = v.value;
   }),
-  url: emit => {
-    const run = v => {
+  url: (set, get) => {
+    const run = (v) => {
       const url = getUrl(v);
       if (url.startsWith('http')) {
         window.open(url, '_blank');
       } else {
-        history.push(\`/\${url}\`);
-        window.scroll(0, 0);
+        const newUrl = \`/\${url}\`;
+        if (newUrl !== history.location.pathname) {
+          history.push(\`/\${url}\`);
+          window.scroll(0, 0);
+        }
       }
     };
-    const toValue = location => ({
+    const toValue = (location) => ({
       ...fromJs(
         location.pathname
           .slice(1)
           .split('/')
           .map((s, i) => ({ key: i + 1, value: s })),
       ),
-      set: v => run(v),
+      push: (v) => run(get(v, true)),
     });
-    emit(toValue(history.location));
-    return history.listen(location => emit(toValue(location)));
+    set(toValue(history.location));
+    const unlisten = history.listen((location) => set(toValue(location)));
+    return (dispose) => dispose && unlisten();
   },
   ${Object.keys((typeof config.library === 'object' && config.library) || {})
     .map((k) => {
@@ -143,7 +148,7 @@ const dataToObj = (data) =>
         .toPairs()
         .reduce(
           (res, { key, value }) =>
-            key.type === 'box'
+            key.type === 'block'
               ? res
               : { ...res, [key.value]: dataToObj(value) },
           {},

@@ -230,6 +230,7 @@ textarea {
   line-height: inherit;
   font-weight: inherit;
   font-style: inherit;
+  color: inherit;
   padding: 0;
   border: 0;
   background: transparent;
@@ -245,9 +246,5 @@ body,
 img {
   display: block;
   width: 100%;
-}
-
-.CodeMirror {
-  height: 100% !important;
 }
 `;

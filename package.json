@@ -1,6 +1,6 @@
 {
   "name": "maraca-app",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "license": "MIT",
   "bin": {
     "dev": "./bin/dev.sh",

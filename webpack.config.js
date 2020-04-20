@@ -4,7 +4,7 @@ const AddAssetPlugin = require('add-asset-webpack-plugin');
 const HTMLPlugin = require('html-webpack-plugin');
 const HtmlTagsPlugin = require('html-webpack-tags-plugin');
 
-const maraca = require('maraca').default;
+const { default: maraca, toJs } = require('maraca');
 
 const config = toJs(maraca(fs.readFileSync('./app.ma', 'utf8')), {
   favicon: 'string',

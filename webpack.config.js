@@ -6,21 +6,11 @@ const HtmlTagsPlugin = require('html-webpack-tags-plugin');
 
 const maraca = require('maraca').default;
 
-const dataToObj = (data) =>
-  data.type === 'value'
-    ? data.value
-    : data.value
-        .toPairs()
-        .reduce(
-          (res, { key, value }) =>
-            key.type === 'box'
-              ? res
-              : { ...res, [key.value]: dataToObj(value) },
-          {},
-        );
-
-const config = dataToObj(maraca(fs.readFileSync('./app.ma', 'utf8')));
-const port = Number(config.port) || 8080;
+const config = toJs(maraca(fs.readFileSync('./app.ma', 'utf8')), {
+  favicon: 'string',
+  port: 'integer',
+});
+const port = config.port || 8080;
 
 module.exports = (env) => ({
   mode: env === 'prod' ? 'production' : 'development',
@@ -70,10 +60,7 @@ module.exports = (env) => ({
   plugins: [
     new AddAssetPlugin('_redirects', `/*    /index.html   200`),
     new AddAssetPlugin('style.css', css),
-    new HTMLPlugin({
-      title: '',
-      favicon: typeof config.favicon === 'string' ? config.favicon : '',
-    }),
+    new HTMLPlugin({ title: '', favicon: config.favicon || '' }),
     new HtmlTagsPlugin({ tags: ['/style.css'], usePublicPath: false }),
   ],
 });

@@ -82,12 +82,7 @@ const library = {
       }
     };
     const toValue = (location) => ({
-      ...fromJs(
-        location.pathname
-          .slice(1)
-          .split('/')
-          .map((s, i) => ({ key: i + 1, value: s })),
-      ),
+      ...fromJs(location.pathname.slice(1).split('/')),
       push: (v) => run(get(v, true)),
     });
     set(toValue(history.location));

@@ -1,6 +1,6 @@
 {
   "name": "maraca-app",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "license": "MIT",
   "bin": {
     "dev": "./bin/dev.sh",
@@ -21,11 +21,11 @@
     "css-loader": "^3.5.3",
     "file-loader": "^6.0.0",
     "history": "^4.10.1",
-    "html-webpack-plugin": "^4.2.1",
+    "html-webpack-plugin": "^4.3.0",
     "html-webpack-tags-plugin": "^2.0.17",
-    "maraca": "^0.7.3",
+    "maraca": "^0.7.4",
     "maraca-loader": "^0.2.4",
-    "maraca-render": "^0.6.4",
+    "maraca-render": "^0.7.0",
     "style-loader": "^1.2.1",
     "webfontloader": "^1.6.28",
     "webpack": "^4.43.0",

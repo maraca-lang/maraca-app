@@ -3,7 +3,7 @@ const { default: maraca, toJs } = require('maraca');
 const script = (config) => `
 
 const path = require('path');
-const { default: maraca, fromJs, print, toJs } = require('maraca');
+const { default: maraca, fromJs, print, resolve, toJs } = require('maraca');
 const { default: render } = require('maraca-render');
 const { createBrowserHistory, createMemoryHistory } = require('history');
 
@@ -52,7 +52,7 @@ const websocketStream = (url) => (set, get) => {
     while (messages.length) ws.send(messages.shift());
   });
   const push = (data) => {
-    const message = print(get(data, true));
+    const message = print(resolve(data, get));
     if (isOpen) ws.send(message);
     else messages.push(message);
   };
@@ -65,7 +65,7 @@ const websocketStream = (url) => (set, get) => {
 
 const library = {
   title: fromJs((value) => (_, get) => () => {
-    const v = toJs(get(value), 'string');
+    const v = toJs(resolve(value, get), 'string');
     if (v) document.title = v;
   }),
   url: (set, get) => {
@@ -83,7 +83,7 @@ const library = {
     };
     const toValue = (location) => ({
       ...fromJs(location.pathname.slice(1).split('/')),
-      push: (v) => run(get(v, true)),
+      push: (v) => run(resolve(v, get)),
     });
     set(toValue(history.location));
     const unlisten = history.listen((location) => set(toValue(location)));

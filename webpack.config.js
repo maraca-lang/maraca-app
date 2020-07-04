@@ -34,12 +34,12 @@ module.exports = (env) => ({
   module: {
     rules: [
       {
-        test: /\/app.ma$/,
+        test: /[\/\\]app.ma$/,
         use: ['maraca-app'],
       },
       {
         test: /\.ma$/,
-        exclude: /\/app.ma$/,
+        exclude: /[\/\\]app.ma$/,
         use: ['maraca-loader'],
       },
       {
@@ -58,7 +58,6 @@ module.exports = (env) => ({
     ],
   },
   plugins: [
-    new AddAssetPlugin('_redirects', `/*    /index.html   200`),
     new AddAssetPlugin('style.css', css),
     new HTMLPlugin({ title: '', favicon: config.favicon || '' }),
     new HtmlTagsPlugin({ tags: ['/style.css'], usePublicPath: false }),

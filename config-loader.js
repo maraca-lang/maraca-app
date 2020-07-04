@@ -43,26 +43,6 @@ const getUrl = (value) => {
   return v.join('/');
 };
 
-const websocketStream = (url) => (set, get) => {
-  const ws = new WebSocket(url);
-  let isOpen = false;
-  const messages = [];
-  ws.addEventListener('open', () => {
-    isOpen = true;
-    while (messages.length) ws.send(messages.shift());
-  });
-  const push = (data) => {
-    const message = print(resolve(data, get));
-    if (isOpen) ws.send(message);
-    else messages.push(message);
-  };
-  set({ ...fromJs(null), push });
-  ws.addEventListener('message', (m) => {
-    set({ ...maraca(m.data), push });
-  });
-  return (dispose) => dispose && ws.close();
-};
-
 const library = {
   title: fromJs((value) => (_, get) => () => {
     const v = toJs(resolve(value, get), 'string');
@@ -103,10 +83,6 @@ const library = {
               if (typeof config.library[k] === 'string') {
                 return `'${k}': require('./${config.library[k]}').default,`;
               }
-              if (config.library[k][''] === 'websocket') {
-                const url = toJs(config.library[k].url, 'string');
-                return url && `'${k}': websocketStream('${url}'),`;
-              }
               return null;
             })
             .filter((s) => s)
@@ -123,11 +99,18 @@ const wrappedLibrary = Object.keys(library).reduce(
   {},
 );
 
-const root = document.createElement('div');
-root.id = 'root';
-document.body.appendChild(root);
+let root = document.getElementById('root');
+if (!root) {
+  root = document.createElement('div');
+  root.id = 'root';
+  document.body.appendChild(root);
+}
 
-maraca({ ...modules, ...wrappedLibrary }, render(root));
+const portal = document.createElement('div');
+portal.id = 'portal';
+document.body.appendChild(portal);
+
+maraca({ ...modules, ...wrappedLibrary }, render(root, { portal }));
 
 `;
 

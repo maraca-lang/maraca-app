@@ -66,7 +66,7 @@ const library = {
       push: (v) => run(resolve(v, get)),
     });
     set(toValue(history.location));
-    const unlisten = history.listen((location) => set(toValue(location)));
+    const unlisten = history.listen(({ location }) => set(toValue(location)));
     return (dispose) => dispose && unlisten();
   },
   ${

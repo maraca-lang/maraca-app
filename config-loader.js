@@ -2,7 +2,6 @@ const { default: maraca, toJs } = require('maraca');
 
 const script = (config) => `
 
-const path = require('path');
 const { default: maraca, fromJs, print, resolve, toJs } = require('maraca');
 const { default: render } = require('maraca-render');
 const { createBrowserHistory, createMemoryHistory } = require('history');
@@ -26,7 +25,7 @@ const set = (obj, path, value) =>
   );
 const app = require.context('./${config.app || 'app'}', true, /\.ma$/);
 const modules = app.keys().reduce((res, k) => {
-  const p = k.slice(2, -3).split(path.sep);
+  const p = k.slice(2, -3).split(/[\\\\\\/]/);
   if (p[p.length - 1].toLowerCase() === 'start') p[p.length - 1] = '';
   set(res, p, app(k).default);
   return res;

@@ -2,6 +2,8 @@ const { default: maraca, fromJs, resolve, toJs } = require('maraca');
 const { renderToString } = require('maraca-render');
 const fs = require('fs-extra');
 
+require.extensions['.css'] = () => undefined;
+
 const config = toJs(maraca(fs.readFileSync('./app.ma', 'utf8')), {
   app: 'string',
   library: ['string', { '**': ['string', { '': 'string', '**': true }] }],

@@ -1,1 +1,1 @@
-rimraf public/* && webpack --config node_modules/maraca-app/webpack.config.js --env prod && node node_modules/maraca-app/ssr.js
+rimraf public/* && webpack --config node_modules/maraca-app/webpack.config.js --env prod && ts-node node_modules/maraca-app/ssr.js
